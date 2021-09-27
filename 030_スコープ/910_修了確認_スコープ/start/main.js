@@ -3,10 +3,11 @@
  * 以下のコードではエラーが発生します。
  * コンソールで"fn called"と表示されるように
  * fn内のコードを変更してください。
- * 
+ *
  * ※if文は削除してはいけません。
  */
 function fn() {
+    let a;
     if(true) {
         let a = 'fn called';
     }
