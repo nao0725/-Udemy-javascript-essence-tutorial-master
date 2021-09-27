@@ -7,4 +7,4 @@ function fn1(){
   }
   fn2();
 }
-fn1;
+fn1();
