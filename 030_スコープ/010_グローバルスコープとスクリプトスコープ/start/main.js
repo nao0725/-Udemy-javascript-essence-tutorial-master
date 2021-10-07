@@ -5,7 +5,7 @@ let a = 0;
 // グローバルスコープ
 var b = 0;
 function c(){}
-// railsのbyebugみたいなやつ
+debugger;
 
 // グローバルオブジェクトは省略可能
 // 以下のように出力する
