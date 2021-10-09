@@ -2,15 +2,15 @@
  * 問題１：
  * 以下のコンソールにはどのような値が表示されるでしょうか？
  */
-// console.log("0 == false", 0 == false);
-// console.log("0 === false", 0 === false);
-// console.log('"false" == false', "false" == false);
-// console.log('"0" == 0', "0" == 0);
-// console.log('Boolean("0") === false', Boolean("0") === false);
-// console.log('Boolean(0) === false', Boolean(0) === false);
-// console.log('!Boolean(0) === false', !Boolean(0) === false);
-// console.log('-1 == false', -1 == false);
-// console.log('!10 === false', !10 === false);
+console.log("0 == false", 0 == false);
+console.log("0 === false", 0 === false);
+console.log('"false" == false', "false" == false);
+console.log('"0" == 0', "0" == 0);
+console.log('Boolean("0") === false', Boolean("0") === false);
+console.log('Boolean(0) === false', Boolean(0) === false);
+console.log('!Boolean(0) === false', !Boolean(0) === false);
+console.log('-1 == false', -1 == false);
+console.log('!10 === false', !10 === false);
 
 /**
  * 問題２：
@@ -23,7 +23,7 @@
 let a = 1;
 
 function fn(num) {
-    num = num || -1;
+    num = num && -1;
     console.log(num);
 }
 fn(a);
@@ -39,3 +39,13 @@ fn(a);
  * greeting("Bob"); -> 出力結果："hello, Bob"
  *
  */
+
+let b = "Bob";
+let c = "hi";
+function greeting(b,c){
+    // b = "hello,";
+    console.log(b,c);
+}
+
+greeting("Bob", "hi"); 
+greeting("Bob");
