@@ -1,16 +1,16 @@
-/**
- * 問題１：
- * 以下のコンソールにはどのような値が表示されるでしょうか？
- */
-console.log("0 == false", 0 == false);
-console.log("0 === false", 0 === false);
-console.log('"false" == false', "false" == false);
-console.log('"0" == 0', "0" == 0);
-console.log('Boolean("0") === false', Boolean("0") === false);
-console.log('Boolean(0) === false', Boolean(0) === false);
-console.log('!Boolean(0) === false', !Boolean(0) === false);
-console.log('-1 == false', -1 == false);
-console.log('!10 === false', !10 === false);
+// /**
+//  * 問題１：
+//  * 以下のコンソールにはどのような値が表示されるでしょうか？
+//  */
+// console.log("0 == false", 0 == false);
+// console.log("0 === false", 0 === false);
+// console.log('"false" == false', "false" == false);
+// console.log('"0" == 0', "0" == 0);
+// console.log('Boolean("0") === false', Boolean("0") === false);
+// console.log('Boolean(0) === false', Boolean(0) === false);
+// console.log('!Boolean(0) === false', !Boolean(0) === false);
+// console.log('-1 == false', -1 == false);
+// console.log('!10 === false', !10 === false);
 
 /**
  * 問題２：
@@ -22,8 +22,10 @@ console.log('!10 === false', !10 === false);
  */
 let a = 1;
 
-function fn(num) {
-    num = num && -1;
+function fn(num = -1) {
+    if(num === undefined || num === null){
+       num = -1;
+    }
     console.log(num);
 }
 fn(a);
@@ -40,12 +42,11 @@ fn(a);
  *
  */
 
-let b = "Bob";
-let c = "hi";
-function greeting(b,c){
-    // b = "hello,";
-    console.log(b,c);
+function greeting(name,hi){
+    hi = hi || "hello";
+    console.log(`${hi}, ${name}`);
 }
 
-greeting("Bob", "hi"); 
+
 greeting("Bob");
+greeting("Bob", "hi"); 
