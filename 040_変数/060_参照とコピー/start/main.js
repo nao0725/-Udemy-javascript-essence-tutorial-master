@@ -1,22 +1,41 @@
+
+// プリミティブ型
+// 変数aはhelloという値への参照を保持している
 let a = "Hello";
+// 変数bをaに代入
+// ここで変数bにもhelloという値への参照をコピーした
 let b = a;
+// 変数aの参照先である値自体が変更されるわけではない
+// bに"bye"が格納されるだけでaに代入されたわけではない
 b = "bye";
 console.log(a,b);
 
+// それぞれの値が独立しているのでbを変更したからaも変わるというわけではない。
 
+// オブジェクト型
+// cは{}への参照を保持している
+// {}への参照が中身のpropを保持している
+let c = {
+  prop: "hello"
+}
+// 変数dをcにコピー（ここでは{}への参照をコピーしている）
+let d = c;
+// どちらもprop: "hello"と出力
+console.log(c,d);
 
-// let c = {
-//   prop: "hello"
-// }
+// どちらも{}への参照を保持しているので、中身のpropの値が変われば,コピー先も変わる
 
-// let d = c;
-// d.prop = "bye";
-// console.log(c,d);
 
 let c = {
-    prop: "hello"
-  }
-  
-  let d = c;
-  d = {prop: "bye"};
-  console.log(c,d);
+  prop: "hello"
+}
+
+let d = c;
+// 値を"bye"に変更すると
+d.prop = "bye";
+// どちらも"bye"に変更されてしまう
+console.log(c,d);
+// これはcもdも同じオブジェクトへの参照を保持しているため
+
+
+
