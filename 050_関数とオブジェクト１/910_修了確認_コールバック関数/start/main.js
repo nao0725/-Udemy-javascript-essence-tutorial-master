@@ -8,11 +8,11 @@
  */
 const person = {
     hello: function () {
-        return 'hello Tom';
+        console.log("helloTom")
     }
 }
 
-// setTimeout(/** ここに追記 */, 1000);
+setTimeout(person.hello, 1000);
 
 /**
  * 問題２：
@@ -24,6 +24,9 @@ const person = {
  * ※alertは第一引数に渡した文字列を画面のダイアログに表
  * 示する関数です。
  */
+
+// setTimeout(alert("helloTom",1000));
+
 
 
 /**
@@ -46,7 +49,7 @@ function after1s(callack) {
 }
 
 // この時点で実行します。
-// after1s(obj.greeting);
+after1s(obj.greeting);
 
 // この後でgreetingを書き換えます。
 obj.greeting = function() {
