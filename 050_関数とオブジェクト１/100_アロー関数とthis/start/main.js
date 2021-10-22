@@ -1,30 +1,15 @@
-// window.name = 'John';
-
-// const person = {
-//     name: 'Tom',
-//     hello: function() {
-//         console.log('Hello ' + this.name);
-//     }
-// }
-// person.hello();
-
-
-window.name = 'John';
-
-
+window.name = 'ルフィ';
 const person = {
-    name: 'Tom',
+    name: 'ゾロ',
     hello(){
         console.log('Hello ' + this.name);
-        const a = () => console.log("Bye " + this.name);
-        a();
     }
 }
-// person.hello();
 
-function b(){
-    const a = () => console.log("Bye " + this.name)
+function b() {
+    // thisの参照先はwindowオブジェクト
+    const a = () => console.log("Bye " + this.name);
     a();
 }
-
+// 出力結果はBye　ルフィ
 b();
