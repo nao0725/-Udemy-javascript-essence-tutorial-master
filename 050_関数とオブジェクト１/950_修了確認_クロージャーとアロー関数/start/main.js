@@ -5,7 +5,7 @@
  * 問題１：
  * addNumberFactoryを短く書き直してみましょう。
  */
-function addNumberFactory(num) {
+ function addNumberFactory(num) {
     function addNumber(value) {
         return num + value;
     }
