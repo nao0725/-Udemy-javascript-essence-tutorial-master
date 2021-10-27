@@ -1,3 +1,4 @@
+
 /**
  * 問題：
  * コールバックとクロージャーの仕組みを使って、
@@ -9,11 +10,13 @@
  * 
  */
 
- function hello(name) {
-  
+function hello(name) {
+  return function() {
+    console.log('hello ' + name);
+  }
 }
 
 /**
-* 実行文は以下の通りです。
-*/
+ * 実行文は以下の通りです。
+ */
 setTimeout(hello('Tom'), 1000);
