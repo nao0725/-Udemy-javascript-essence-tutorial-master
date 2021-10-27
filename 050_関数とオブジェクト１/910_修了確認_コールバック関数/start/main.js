@@ -6,16 +6,7 @@
  * 
  * ※必ずperson.helloメソッドは解答内で使用してください。
  */
-const person = {
-    hello: function () {
-        return "hello Tom"
-    }
-}
 
-setTimeout(function (){
-    const hello = person.hello();
-    console.log(hello);
-} ,1000);
 
 /**
  * 問題２：
@@ -28,12 +19,6 @@ setTimeout(function (){
  * 示する関数です。
  */
 
-// setTimeout(alert("helloTom",1000));
-
-// setTimeout(function (){
-//     const hello = person.hello();
-//     alert(hello);
-// } ,1000);
 
 /**
  * 問題３：
@@ -45,22 +30,6 @@ setTimeout(function (){
  * この時、１秒後にコンソールに出力されるのは
  * 'hello'または'hey'のどちらでしょうか？
  */
-const obj = {};
-obj.greeting = function() {
-    console.log('hello');
-}
-
-function after1s(callack) {
-    setTimeout(callack, 1000);
-}
-
-// この時点で実行します。
-after1s(obj.greeting);
-
-// この後でgreetingを書き換えます。
-obj.greeting = function() {
-    console.log('hey');
-}
 
 
 /**
@@ -72,34 +41,3 @@ obj.greeting = function() {
  * 
  * ※コールバック関数を用いて実装してください。
  */
-function calcFactory(val, callback) {
-    return {
-        plus: function(target) {
-            const newVal = val + target;
-            callback(`${val} + ${target} = ${newVal}`);
-            val = newVal;
-        },
-        minus: function(target) {
-            const newVal = val - target;
-            callback(`${val} - ${target} = ${newVal}`);
-            val = newVal;
-        },
-        multiply: function(target) {
-            const newVal = val * target;
-            callback(`${val} x ${target} = ${newVal}`);
-            val = newVal;
-        },
-        divide: function(target) {
-            const newVal = val / target;
-            callback(`${val} / ${target} = ${newVal}`);
-            val = newVal;
-        }
-    };
-}
-
-const calc = calcFactory(10, alert);
-calc.plus(5); 
-calc.minus(3); 
-calc.multiply(3);
-calc.divide(2);
-

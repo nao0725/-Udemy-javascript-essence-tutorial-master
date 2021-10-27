@@ -1,12 +1,4 @@
-const person = {
-    name: 'Tom',
-    bye: function() {
-        console.log('Bye ' + this.name);
-    },
-    hello: function (greeting) {
-        console.log(greeting + ' ' + this.name);
-        return greeting + ' ' + this.name;
-    },
+
     /**
      * 問題４：
      * 1秒後に"hello Tom"
@@ -23,20 +15,7 @@ const person = {
      * ３．thisを一旦変数に代入
      */
 
-    hello1s(){
-        // setTimeout(person.hello.bind(this, "hello"), 1000)
 
-        // setTimeout(() => {
-        //     this.hello("hello");
-        // }, 1000);
-
-        const _this = this;
-       setTimeout(function(){
-           _this.hello("hello");
-       })
-    }
-}
-person.hello1s();
 
 /**
  * 問題１：
@@ -44,7 +23,6 @@ person.hello1s();
  * と出力されるように、以下のコード
  * の記載を変更しましょう。
  */
-// setTimeout(person.hello.bind(person, "hello"), 1000);
 
 /**
  * 問題２：
@@ -52,7 +30,6 @@ person.hello1s();
  * と出力されるように、
  * 以下のコードを変更してください。
  */
-// alert(person.hello("hello"));
 
 /**
  * 問題３：
@@ -61,4 +38,3 @@ person.hello1s();
  * "Bye"しか表示されませんでした。
  * "Bye Tom"とするためにはどうすればよいでしょうか？
  */
-// setTimeout(person.bye.bind(person), 1000);
