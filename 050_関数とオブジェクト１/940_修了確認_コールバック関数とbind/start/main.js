@@ -4,7 +4,7 @@
  * １秒後にconsole.logまたはalertで計算式が表示される
  * ようにcalcFactory関数内の実装を変更してみてください。
  */
-function calcFactory(val, callback) {
+ function calcFactory(val, callback) {
     return {
         plus: function(target) {
             const newVal = val + target;
