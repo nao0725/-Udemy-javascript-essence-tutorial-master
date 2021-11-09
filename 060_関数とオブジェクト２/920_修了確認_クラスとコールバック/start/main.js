@@ -8,30 +8,19 @@
  * 
  * ※２通りの方法で実装してみてください。
  */
-// class Person {
-//   constructor(name, age) {
-//       this.name = name;
-//       this.age = age;
-//   }
-// }
 
-// Object.prototype.hello = function() {
-//   console.log('hello ' + this.name);
-// }
+// 1回目：不正解(setTimeoutの部分だけ変える)　関数とオブジェクト１のコールバック関数とthisを見直す
 
-// const bob = new Person('Bob', 23);
-// setTimeout(bob.hello(), 1000);
-
-
-class Person {
+ class Person {
   constructor(name, age) {
       this.name = name;
       this.age = age;
-      this.hello = function(){
-        console.log('hello ' + this.name);
-    }
+  }
+
+  hello() {
+      console.log('hello ' + this.name);
   }
 }
 
 const bob = new Person('Bob', 23);
-setTimeout(bob.hello(), 1000);
+setTimeout(bob.hello, 1000);
