@@ -1,4 +1,4 @@
-/**
+ /**
  * 問題：
  * 電卓の入力と同じような挙動をするチェーンメソッド
  * を作成してみましょう。
@@ -24,37 +24,9 @@
  * 	.set(6) -> '42'を出力（10 - 3) * 6
  */
 
-class Calculator{
-	constructor(number){
-		this.number = number;
-	}
+// 1回目：不正解(point1　変数の中に計算式入れる、point2 計算結果を次の演算の値として使用する)
 
-	set(number){
-		console.log(number)
-	}
-
-	minus(){
-		console.log(this.number);
-		return this;
-	}
-
-	mutiply(){
-		console.log(minus() * this.number);
-		return this;
-	}
-
-	divide(){
-		console.log(mutiply() / this.number);
-		return this;
-	}
-
-	plus(){
-		console.log(divide() + this.number);
-		return this;
-	}
-}
-
-const calc = new Calculator(10);
+const calc = new Calculator();
 
 calc.set(10)
 	.minus()
@@ -65,3 +37,4 @@ calc.set(10)
 	.set(2)
 	.plus()
 	.set(2)
+
