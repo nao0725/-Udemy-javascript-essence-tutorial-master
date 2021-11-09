@@ -43,7 +43,53 @@
  * login failed <- loginで失敗した場合
  */
 
-//  一回目：give up
+// loginController(new User('Bob'));
+// class checkRoll(){
+//   constructor(user,redirect){
+//     user = this.user;
+//     redirect = this.redirect;
+//   }
+// }
+
+class User {
+  // 問題で必要そうな値は名前
+  constructor(name){
+    this.name = name;
+    // path（url）を格納しておく
+    this.redirectTo = "/"
+  }
+  // ログインメソッド作成
+  login(){
+    console.log(`User: ${this.name}`);
+    // 成功しましたということで、trueを返す
+    return true;
+  }
+  // checkRollメソッドも作成
+  checkRoll(){
+    console.log("you have normal roll");
+    return true;
+  }
+  // redirectメソッドも作成
+  redirect(){
+    console.log(`redirect : ${this.redirectTo}`)
+    return true;
+  }
+}
+
+// AdminUserも作成(殆どUserの機能を持っているのでextendsで継承)
+class AdminUser extends User{
+  constructor(name){
+    super(name);
+    // リダイレクト後のpathも変わってくるので
+    this.redirectTo = "/admin"
+  }
+
+  // 変わってくる部分はrollの部分なので変更しておく
+  checkRoll(){
+    console.log("you have admin roll");
+    return true;
+  }
+}
 
 function loginController(user) {
   if (user.login()
@@ -54,3 +100,7 @@ function loginController(user) {
     console.log('login failed');
   }
 }
+
+
+// loginController(new User('Bob'));
+loginController(new AdminUser('Bob'));
