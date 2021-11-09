@@ -24,37 +24,7 @@
  * 	.set(6) -> '42'を出力（10 - 3) * 6
  */
 
-class Calculator{
-	constructor(number){
-		this.number = number;
-	}
-
-	set(number){
-		console.log(number)
-	}
-
-	minus(){
-		console.log(this.number);
-		return this;
-	}
-
-	mutiply(){
-		console.log(minus() * this.number);
-		return this;
-	}
-
-	divide(){
-		console.log(mutiply() / this.number);
-		return this;
-	}
-
-	plus(){
-		console.log(divide() + this.number);
-		return this;
-	}
-}
-
-const calc = new Calculator(10);
+const calc = new Calculator();
 
 calc.set(10)
 	.minus()
