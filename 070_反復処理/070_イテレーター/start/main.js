@@ -1,18 +1,15 @@
-function genIterator(max){
+// このようにmaxに値を渡さないと上限値が設定できない
+function genIterator(max = 10){
   let i = 0;
 
-  return {
-    next : function(){
-      // if文を使ってループを終了する条件を作る
-      // iがmax以上でループ終了
+  return{
+    next: function(){
       if(i >= max){
         return{
-          // trueの時はvalueの設定いらない
           done: true
         }
-      // iがmax以下でループ継続
       } else {
-        return {
+        return{
           done: false,
           value: i++
         }
@@ -21,13 +18,14 @@ function genIterator(max){
   }
 }
 
-const it = genIterator(10);
-// itを初期化
-let a = it.next();
-// while文の条件として、aがfalseじゃないときループ終了と記載
-while(!a.done){
-  // 0から9まで出力される
-  console.log(a.value);
-  // 出力後a初期化(これがないと無限ループ)
-  a = it.next();
+// オブジェクトを定義
+const obj = {
+  [Symbol.iterator]: genIterator
 }
+// このようにするとobjをfor文で使用できるが、上限値の設定ができないためmax = 10として値を設定した
+// for文に追加
+for(const i of obj){
+  // 0から9まで出力される
+  console.log(i);
+}
+
