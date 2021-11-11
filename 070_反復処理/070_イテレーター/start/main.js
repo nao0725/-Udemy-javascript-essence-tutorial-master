@@ -19,12 +19,10 @@ function genIterator(max = 10){
 }
 
 const obj = {
-  // 第一引数はthisの値ですがないのでnull,第二引数にループ回数を設定する
-  [Symbol.iterator]: genIterator.bind(null, 100)
+  [Symbol.iterator]: genIterator.bind(null, 5)
 }
 
-for(const i of obj){
-  // 99まで出力される
-  console.log(i);
-}
+const set = new Set(obj);
+// 0,1,2,3,4,..と出力される
+console.log(set);
 
