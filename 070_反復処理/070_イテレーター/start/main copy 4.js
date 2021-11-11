@@ -18,13 +18,14 @@ function genIterator(max = 10){
   }
 }
 
+// オブジェクトを定義
 const obj = {
-  // 第一引数はthisの値ですがないのでnull,第二引数にループ回数を設定する
-  [Symbol.iterator]: genIterator.bind(null, 100)
+  [Symbol.iterator]: genIterator
 }
-
+// このようにするとobjをfor文で使用できるが、上限値の設定ができないためmax = 10として値を設定した
+// for文に追加
 for(const i of obj){
-  // 99まで出力される
+  // 0から9まで出力される
   console.log(i);
 }
 
