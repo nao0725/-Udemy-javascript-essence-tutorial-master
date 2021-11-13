@@ -1,14 +1,17 @@
-
-
-// ジェネレーターに書き換え
-// functionの後ろに*をつけることでこの関数がジェネレーター関数であることを示している
 function* gen(){
-  if(ループ継続){
-    // 下記のyieldでイテレーターの部分を表す
-    // ここでdoneがfalse,value(値)であることを指す
-    yield 値;
-  } else {
-    // ここのreturnでdoneがtrue,valueを表す　→　ループを抜け出す
-    return 値;
-  }
+  yield 1; //①
+  yield 2; //②
+  return 3; //③
 }
+
+// 変数にgen()を格納
+// ジェネレーター関数を実行することでイテレーターが帰ってくる
+const it = gen();
+// イテレーターのnextメソッドを使用
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+// {value: 2, done: false} →　①のyield
+// {value: 2, done: false} →　②のyield
+// {value: 3, done: true} →　③のyield
+// 上記のように出力される
