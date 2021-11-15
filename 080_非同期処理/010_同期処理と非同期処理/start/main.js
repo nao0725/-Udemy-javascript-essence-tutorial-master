@@ -1,6 +1,3 @@
-// 関数を用意
-// sleep関数が実行されるとms分だけメインスレッドを占有できる仕組み
-// 実行されるとsleep doneと表示される
 function sleep(ms) {
   const startTime = new Date();
   while (new Date() - startTime < ms);
@@ -8,11 +5,13 @@ function sleep(ms) {
 }
 
 const btn = document.querySelector('button');
-// ブラウザ上のボタンを押すとコンソール上にbutton clickedと表示される
 btn.addEventListener('click', function(){
   console.log('button clicked');
 });
 
-// ここで3秒後に出力される
-sleep(3000)
-// この処理中にボタンを押してもsleep doneの後にbutton clickedが表示される
+// 2秒待ってからsleep実行する
+setTimeout(function(){
+  sleep(3000)
+},2000)
+// 上記のようにすると第二引数で与えた分だけメインスレッドが解放される
+// ボタンを連続で押すと2秒後に処理が止まりsleep doneが出力された後、クリックした分が表示される
