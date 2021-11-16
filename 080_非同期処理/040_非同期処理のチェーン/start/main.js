@@ -1,13 +1,35 @@
-// コールバック関数を1秒間後に待機したあと実行される関数を定義
-function sleep(callback){
+// 引数にvalを追加し、+1加算される形でコンソールで出力されるようにする
+function sleep(callback,val){
   setTimeout(function() {
-    console.log("hello");
-    callback();
-    // helloが呼ばれた後にcallback関数が実行される
+    console.log(val++);
+    // callbackの引数としてvalを渡す
+    callback(val);
   },1000)
 }
 
-sleep(function(){
+// callbackの引数として渡しているのでここにもvalを渡す
+sleep(function(val){
   console.log("callback done!");
-})
-// 1病後にhelloとcallback doneが出力される
+  // valは0と出力される
+}, 0)
+
+//　sleepをさらにsleepの中で実行する
+sleep(function(val){
+  sleep(function(val){
+    // このようにすることで1秒後に0, また1秒後に1と出力される
+  }, val)
+}, 0)
+
+sleep(function(val){
+  sleep(function(val){
+    sleep(function(val){
+      sleep(function(val){
+        sleep(function(val){
+            // 4まで出力される
+        }, val)
+      }, val)
+    }, val)
+  }, val)
+}, 0)
+
+
