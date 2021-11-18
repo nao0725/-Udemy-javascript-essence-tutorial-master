@@ -8,6 +8,7 @@ new Promise(function(resolve, reject){
 }).catch(function(){
   console.log("catch");
 }).finally(function(){
+  // このfinallyは必ず呼ばれる
   console.log("finally");
 })
 
