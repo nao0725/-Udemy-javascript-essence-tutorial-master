@@ -1,18 +1,21 @@
 function sleep(val) {
-  return new Promise(function(resolve) {
+  return new Promise(function(resolve, reject) {
     setTimeout(function() {
       console.log(val++);
-      resolve(val);
+      // reject に変更
+      reject(val);
     }, val * 500);
   });
 }
 
-// コンソールに2,3,3,4と出力される
-// sleep(2)が実行された時点で、次の処理に移行
-// 2で引数に渡しているので,上記のval++で+1されるので3と出力される
-Promise.race([sleep(2), sleep(3), sleep(4)])
+
+Promise.all([sleep(2), sleep(3), sleep(4)])
   .then(function(data){
   console.log(data);
+}).catch(function(e){
+  // この場合catchの処理にエラーの表示が出る
+  // allSettleではエラーが出力されない(ステータスで確認)  
+  console.error(e);
 });
 
 // sleep(0).then(function(val) {
