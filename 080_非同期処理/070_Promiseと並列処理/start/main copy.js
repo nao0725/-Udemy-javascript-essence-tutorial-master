@@ -7,11 +7,13 @@ function sleep(val) {
   });
 }
 
+// Promise.allとして（）内に反復可能オブジェクトを入れる
+// Promise.allが配列に格納されたPromiseのインスタンスが全て完了するまで次のthenメソッドを待つ
 Promise.all([sleep(2), sleep(3), sleep(4)])
-// 引数dataを渡す
-  .then(function(data){
-    // dataを出力すると配列となってresolveで渡された結果が帰ってくる
-  console.log(data);
+  .then(function(){
+  // 2,3,4,endと出力
+  // endが一番最後
+  console.log("end");
 });
 // sleep(0).then(function(val) {
 //   return sleep(val);
