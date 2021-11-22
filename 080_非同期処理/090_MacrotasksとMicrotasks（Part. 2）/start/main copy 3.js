@@ -10,11 +10,10 @@ new Promise(function promise(resolve) {
   console.log('job1');
   setTimeout(function task2() {
     console.log('task2');
-    // 先にresolveを実行し、job1~3まで実行
-    // setTimeoutの関数に従うのでtask2実行後にjob4を実行する
-    queueMicrotask(function job4(){
-      console.log("job4");
-    });
+  });
+  // thenメソッドが呼ばれた際にjob4が発見されるので、job2,3よりも先に実行される
+  queueMicrotask(function job4(){
+    console.log("job4");
   });
 
 }).then(function job2() {
@@ -30,7 +29,7 @@ console.log('global end');
 // global end
 // task1
 // job1
+// job4 　←　ここで実行されてる
 // job2
 // job3
 // task2
-// job4 　←　ここで実行されてる
