@@ -6,16 +6,15 @@ new Promise(function promise(resolve) {
     resolve();
   });
 
+  // resolve実行後先にjob1を実行
+  // マイクロタスクは格納されている全てのジョブを実行する
+  // よってjob2,job3も実行する
 }).then(function job1() {
   console.log('job1');
   setTimeout(function task2() {
+    // マイクロタスク実行後にマクロタスクtask2を実行する
     console.log('task2');
   });
-  // thenメソッドが呼ばれた際にjob4が発見されるので、job2,3よりも先に実行される
-  queueMicrotask(function job4(){
-    console.log("job4");
-  });
-
 }).then(function job2() {
   console.log('job2');
 }).then(function job3() {
@@ -29,7 +28,6 @@ console.log('global end');
 // global end
 // task1
 // job1
-// job4 　←　ここで実行されてる
 // job2
 // job3
 // task2
