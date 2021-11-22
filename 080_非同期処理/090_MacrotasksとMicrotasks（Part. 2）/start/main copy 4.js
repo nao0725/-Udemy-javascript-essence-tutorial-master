@@ -10,11 +10,11 @@ new Promise(function promise(resolve) {
   console.log('job1');
   setTimeout(function task2() {
     console.log('task2');
-    // queueMicrotaskの書き換え
-    const p = Promise.resolve();
-    p.then(function job4() {
-      console.log("job4")
-    })
+    // 先にresolveを実行し、job1~3まで実行
+    // setTimeoutの関数に従うのでtask2実行後にjob4を実行する
+    queueMicrotask(function job4(){
+      console.log("job4");
+    });
   });
 
 }).then(function job2() {
