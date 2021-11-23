@@ -7,12 +7,14 @@ function sleep(val) {
   });
 }
 
-async function init(){
-  // 変数に格納してみる
-  let val = await sleep(0);
-  // valには1が格納されている
-  // Promise構文のresolveのvalが渡されている
-  console.log(val);
-}
-
-init();
+sleep(0).then(function(val) {
+  return sleep(val);
+}).then(function(val) {
+  return sleep(val);
+}).then(function(val) {
+  return sleep(val);
+}).then(function(val) {
+  return sleep(val);
+}).then(function(val) {
+  return sleep(val);
+})
