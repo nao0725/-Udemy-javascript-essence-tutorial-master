@@ -7,12 +7,10 @@ function sleep(val) {
   });
 }
 
+// 先頭にasyncとつけた関数を用意
 async function init(){
-  // 変数に格納してみる
-  let val = await sleep(0);
-  // valには1が格納されている
-  // Promise構文のresolveのvalが渡されている
-  console.log(val);
+  // 中でawaitを使う
+  await sleep(0);
 }
-
+// initを実行すると0と出力される
 init();
