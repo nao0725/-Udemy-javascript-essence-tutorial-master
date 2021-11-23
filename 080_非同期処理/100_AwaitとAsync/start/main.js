@@ -7,14 +7,10 @@ function sleep(val) {
   });
 }
 
-sleep(0).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-}).then(function(val) {
-  return sleep(val);
-})
+// 先頭にasyncとつけた関数を用意
+async function init(){
+  // 中でawaitを使う
+  await sleep(0);
+}
+// initを実行すると0と出力される
+init();
