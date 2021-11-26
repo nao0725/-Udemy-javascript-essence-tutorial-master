@@ -1,6 +1,8 @@
-// asを使用してこのファイル内でのみ使用できる名前にする
-import { publicVal as val, publicFn as fn } from "./moduleA.js";
-// asに合わせて名前を変更
+// defaultを使って書く場合は{}をつけない
+// defaultを使う場合は変数をimportの後に準備
+import defaultVal, 
+{ publicVal as val, publicFn as fn } from "./moduleA.js";
 console.log(val);
+// 出力結果は1となる
+console.log(defaultVal);
 fn();
-// 出力結果は変わらない
