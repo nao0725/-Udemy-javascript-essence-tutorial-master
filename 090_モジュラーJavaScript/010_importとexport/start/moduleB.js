@@ -1,7 +1,6 @@
-// moduleAの読み込みを行う
-// from以下で読み込むファイルを指定する
-import { publicVal, publicFn } from "./moduleA.js";
-// 0と出力される
-console.log(publicVal);
-// publicFn calledと出力される
-publicFn();
+// asを使用してこのファイル内でのみ使用できる名前にする
+import { publicVal as val, publicFn as fn } from "./moduleA.js";
+// asに合わせて名前を変更
+console.log(val);
+fn();
+// 出力結果は変わらない
