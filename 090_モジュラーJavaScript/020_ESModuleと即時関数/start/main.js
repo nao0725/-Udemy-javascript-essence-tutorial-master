@@ -3,10 +3,11 @@ const moduleA = (function () {
   console.log('IIFE called');
 
   let privateVal = 1;
-  let publicVal = 10;
+  let publicVal = {prop: 10};
 
   function publicFn() {
-    console.log('publicFn called: ' + privateVal++);
+    // 下記もpropを出力できるよう追加
+    console.log('publicFn called: ' + privateVal.prop);
   }
 
   function privateFn() {
@@ -21,7 +22,7 @@ const moduleA = (function () {
 })();
 
   // 以下のように即時関数を定義して格納する
-  // 一般的には仮引数、実引数に値を入れて使用する
+  // 一般的には仮引数、実引数にf値を入れて使用する
   const moduleB = (function(moduleA) {
     // 内部でmoduleAを使用
     moduleA.publicFn();
