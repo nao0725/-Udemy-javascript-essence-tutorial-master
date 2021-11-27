@@ -6,7 +6,6 @@ const moduleA = (function () {
   let publicVal = 10;
 
   function publicFn() {
-    // privateValが1ずつカウントアップする仕組みがある
     console.log('publicFn called: ' + privateVal++);
   }
 
@@ -21,14 +20,38 @@ const moduleA = (function () {
 
 })();
 
-  // 下記のようにするとpublicFnを実行できる
-  // privateFn, privateValは外部から呼べない
-  moduleA.publicFn();
-  // 1ずつ増えていく
-  moduleA.publicFn();
-  moduleA.publicFn();
-  // 下記のようにすると10という値が取れてくる
-  console.log(moduleA.publicVal++)
-  // こちらも++すると11,12とカウントアップする
-  console.log(moduleA.publicVal++)
-  console.log(moduleA.publicVal++)
+  // 以下のように即時関数を定義して格納する
+  // 一般的には仮引数、実引数に値を入れて使用する
+  const moduleB = (function(moduleA) {
+    // 内部でmoduleAを使用
+    moduleA.publicFn();
+    moduleA.publicFn();
+    moduleA.publicFn();
+    console.log(moduleA.publicVal++)
+    console.log(moduleA.publicVal++)
+    console.log(moduleA.publicVal++)
+  })(moduleA);
+  
+  // 省略して書くこともできる
+  // moduleAはオブジェクトなので、直接publicFn, Valを分割代入可能
+  const moduleB2 = (function( {publicFn, publicVal }) {
+    // moduleAを使用していないのでmoduleAを削除
+    publicFn();
+    publicFn();
+    publicFn();
+    console.log(publicVal++)
+    console.log(publicVal++)
+    console.log(publicVal++)
+  })(moduleA);
+
+  // さらに名前をつけて書くことも可能
+
+  const moduleB3 = (function( {publicFn: Fn, publicVal: Val }) {
+    // このようにすると上記のmoduleB2と同じ結果が出力される
+    Fn();
+    Fn();
+    Fn();
+    console.log(Val++)
+    console.log(Val++)
+    console.log(Val++)
+  })(moduleA);
