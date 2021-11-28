@@ -1,15 +1,5 @@
-// 関数外で変数を宣言
-const a = 0
-function fn(){
-  console.log(this);
-  // レキシカルスコープは使用可能
-  console.log(a);
-}
-fn();
-
-const obj = {
-  fn
-}
-obj.fn();
-
-
+// moduleA.jsで宣言された変数を使用するために読み込む
+import "./moduleA.js"
+// 以下で1と出力される
+console.log(window.b);
+// fromを書かなくてもmoduleAを実行したいだけなのでOK
