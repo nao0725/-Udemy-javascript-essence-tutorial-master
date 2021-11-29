@@ -39,4 +39,45 @@
  * customFn3
  * 
  */
-// 1回目：不正解（追加等はしない my-libraryにコードを追加し、他はいじらない）
+
+//  =========================================================
+// eventsオブジェクトを生成する上で必要な要素を考える
+const events = (function() {
+	const eventStack = new Map();
+	return {
+		on(type, fn){
+			const fnStack = eventStack.get(type) || new Set();
+			fnStack.add(fn);
+			eventStack.set(type, fnStack);
+		},
+		off(){
+			const fnStack = eventStack.get(type);
+			if(fnStack && fnStack.has(fn)) {
+				fnStack.delete(fn);
+			}
+		},
+		emit(type){
+			const fnStack = eventStack.get(type)
+			if(fnStack){
+				for(const fn of fnStack){
+					fn();
+				}
+			}
+		}
+	}
+})();
+
+
+class MyLibrary {
+	constructor() {
+		events.emit('beforeInit');
+	
+		console.log('library process');
+		
+		events.emit('afterInit');
+	}
+	method() {
+		// do something
+	}
+}
+
