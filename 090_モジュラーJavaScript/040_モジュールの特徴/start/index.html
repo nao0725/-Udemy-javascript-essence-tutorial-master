@@ -27,9 +27,12 @@
             コースへ
         </a>
     </div>
-    <!-- h1 タグを生成 -->
+    <!-- textContentが読み込まれなくなる（main.jsが読み込まれたタイミングではまだh1タグが読み込まれていないから） -->
+    <!-- scriptタグが見つかった時点で読み込まれる　＝　同期的な処理 -->
+    <!-- 非同期にしたい場合にはdeferという属性を付与する -->
+    <script src="main.js" defer ></script>
+    <!-- モジュールレクチャーと出力される -->
     <h1>モジュールレクチャー</h1>
-    <script src="main.js" defer></script>
     <script type="module" src="moduleB.js"></script>
 </body>
 
