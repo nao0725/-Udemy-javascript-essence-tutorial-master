@@ -1,10 +1,8 @@
-a = 0;
-console.log(a);
-
 function fn() {
   "use strict"
-  b = 1
-  console.log(b);
+  // b = 1
+  // Uncaught SyntaxError: Unexpected strict mode reserved wordと表示され使用不可
+  const implements, interface,packages
 }
 fn();
-// この場合、bのみエラーとなる
+// console.log(b);
