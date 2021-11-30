@@ -1,8 +1,11 @@
 function fn() {
   "use strict"
-  // b = 1
-  // Uncaught SyntaxError: Unexpected strict mode reserved wordと表示され使用不可
-  const implements, interface,packages
+  return this;
 }
-fn();
-// console.log(b);
+// callでthisの値を変更
+console.log(fn.call(2));
+// 2と出力される
+// Strictモードを外すとNumber {2}とオブジェクトでラップされたプリミティブ型の値が帰ってくる
+// 文字列も同様
+console.log(fn.call("2"));
+// 2と帰ってくる
