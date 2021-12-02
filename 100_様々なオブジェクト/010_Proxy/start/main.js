@@ -1,21 +1,13 @@
 const targetObj = { a: 0 };
 const handler = {
-  get: function (target, prop, receiver) {
-    console.log(`[get]: ${prop}`);
-    return target[prop];
-  },
-  // 下記のdeleteでは値が削除された際の検知を行う
-  // deletePropertyの場合にはreceiverは渡ってこないので削除
-  deleteProperty: function (target, prop) {
-    console.log(`[delete]: ${prop}`);
-    // deleteとして値を削除
-    delete target[prop];
+  set: function (target, prop, value, receiver) {
+    console.log(`[set]: ${prop}`);
+    // setのトラップが呼ばれた際にErrorが発生するようにする
+    throw new Error(`cannot add prop`)
+    // deleteでも削除不可にできる
   }
 }
 
 const proxy = new Proxy(targetObj, handler);
-proxy.a;
-// delete aと出力される
-delete proxy.a;
-// targetObjの中身をコンソールで確認してみるとオブジェクトの中身も削除されている
-
+// 以下でaの値を1に変更使用としてもエラーが発生し変更できない
+proxy.a = 1;
