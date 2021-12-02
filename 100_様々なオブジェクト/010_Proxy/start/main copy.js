@@ -5,7 +5,7 @@ const handler = {
   // 第一引数にはtargetObjが渡ってくる
   // 第二引数にはプロパティにアクセスされた際のプロパティの名前が渡ってくる
   // 第三引数にはsetの場合には新しい値が渡ってくる
-  // 第四引数は
+  // 第四引数はnew Proxyのオブジェクト（proxy）が渡ってくる
   set: function (target, prop, value, receiver) {
     // Proxy経由で値が呼ばれた際に、setのトラップが呼ばれているのか確認する
     console.log(`[set]: ${prop}`);
