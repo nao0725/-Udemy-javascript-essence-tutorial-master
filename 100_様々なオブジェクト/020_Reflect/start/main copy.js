@@ -5,6 +5,10 @@ class C {
   }
 }
 
+// インスタンス化したものを変数に格納
+const obj1 = new C(1,2)
+// C {a: 1, b: 2}と出力される
+console.log(obj1);
 
 
 // const bob = {
