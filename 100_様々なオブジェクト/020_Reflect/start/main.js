@@ -4,14 +4,20 @@ class C {
     this.b = b;
   }
 }
+// try...catch構文でエラー出力
+try{
+  Object.defineProperty
+} catch(e) {
 
-const obj2 = Reflect.construct(C, [1,2]);
-console.log(obj2);
-// aという値がobj2に含まれているかどうか確認できる（true or falseで出力）
-console.log("a" in obj2);
-// 上記は Reflectのhasというメソッドと同様の内部メソッドを呼んでいる
-// 第一引数にはオブジェクト、第二引数には判定する値（ここではfalse）を入れる
-console.log(Reflect.has(obj2, "c"))
+}
+
+// 上記のように書くのは面倒なので
+if(Reflect.defineProperty){
+  // trueであればここのブロック結果が出力
+} else {
+  // falseであればここのブロック結果が出力
+}
+
 
 
 // const bob = {
